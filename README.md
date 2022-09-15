@@ -22,4 +22,4 @@
 &nbsp;&nbsp;  
 &nbsp;&nbsp;  
 - real CAD file ( 3D ) for 3D printing
-  * (https://github.com/yukinpl/DanielKB/blob/main/keyboard_3d.dwgg
+  * https://github.com/yukinpl/DanielKB/blob/main/keyboard_3d.dwgg
