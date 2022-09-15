@@ -1,7 +1,8 @@
 # DanielKB
-- layout  : https://github.com/yukinpl/DanielKB/blob/main/keyboard_layout.png
+- layout
+![title](https://github.com/yukinpl/DanielKB/blob/main/keyboard_layout.png){: width="1000"}  
 - mapping
-![title](https://github.com/yukinpl/DanielKB/blob/main/mapping_between_keyboard_and_circuit.png){: width="1000"} 
+![title](https://github.com/yukinpl/DanielKB/blob/main/mapping_between_keyboard_and_circuit.png){: width="1000"}   
 - reference : http://www.keyboard-layout-editor.com/  
 &nbsp;&nbsp;  
 &nbsp;&nbsp;  
