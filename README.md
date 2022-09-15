@@ -5,7 +5,7 @@
 &nbsp;&nbsp;  
 &nbsp;&nbsp;  
 - numbers of key
-  * A , B , C , D , E -> 8
-  * F , H -> 7
-  * G , I , K , L , M , N , O , P -> 1
-  * J -> 2
+  * 8 -> A , B , C , D , E
+  * 7 -> F , H
+  * 1 -> G , I , K , L , M , N , O , P
+  * 2 -> J
