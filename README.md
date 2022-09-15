@@ -1,12 +1,5 @@
 # DanielKB
-- layout
-![title](https://github.com/yukinpl/DanielKB/blob/main/keyboard_layout.png){: width="700"}{: .center}  
-&nbsp;&nbsp;  
-&nbsp;&nbsp;  
-- mapping
-![title](https://github.com/yukinpl/DanielKB/blob/main/mapping_between_keyboard_and_circuit.png){: width="700"}{: .center}  
-&nbsp;&nbsp;  
-&nbsp;&nbsp;  
+- layout :
 - reference : http://www.keyboard-layout-editor.com/  
 - numbers of key
   * 8 -> A , B , C , D , E
