@@ -1,10 +1,10 @@
 # DanielKB
 - layout
-![title](https://github.com/yukinpl/DanielKB/blob/main/keyboard_layout.png){: width="1000"}{: .center}  
+![title](https://github.com/yukinpl/DanielKB/blob/main/keyboard_layout.png){: width="700"}{: .center}  
 &nbsp;&nbsp;  
 &nbsp;&nbsp;  
 - mapping
-![title](https://github.com/yukinpl/DanielKB/blob/main/mapping_between_keyboard_and_circuit.png){: width="1000"}{: .center}  
+![title](https://github.com/yukinpl/DanielKB/blob/main/mapping_between_keyboard_and_circuit.png){: width="700"}{: .center}  
 &nbsp;&nbsp;  
 &nbsp;&nbsp;  
 - reference : http://www.keyboard-layout-editor.com/  
@@ -17,8 +17,8 @@
   * 2 -> J
 
 - CAD image
-![title](https://github.com/yukinpl/DanielKB/blob/main/cad_image.png){: width="1000"}{: .center}  
-![title](https://github.com/yukinpl/DanielKB/blob/main/cad_image2.png){: width="1000"}{: .center}  
+![title](https://github.com/yukinpl/DanielKB/blob/main/cad_image.png){: width="700"}{: .center}  
+![title](https://github.com/yukinpl/DanielKB/blob/main/cad_image2.png){: width="700"}{: .center}  
 &nbsp;&nbsp;  
 &nbsp;&nbsp;  
 - real CAD file ( 3D ) for 3D printing
