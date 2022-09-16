@@ -8,4 +8,6 @@
   * 8 -> A , B , C , D , E
   * 7 -> F , H
   * 1 -> G , I , K , L , M , N , O , P
-  * 2 -> J 
+  * 2 -> J  
+&nbsp;&nbsp;  
+- schematic (img file): https://github.com/yukinpl/DanielKB/blob/main/schematic.png
