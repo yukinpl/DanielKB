@@ -10,5 +10,4 @@
   * 1 -> G , I , K , L , M , N , O , P
   * 2 -> J  
 &nbsp;&nbsp;  
-- schematic
-![title](https://github.com/yukinpl/DanielKB/blob/main/schematic.png){: width="700"}{: .center}  
+- schematic : https://github.com/yukinpl/DanielKB/blob/main/schematic.md
