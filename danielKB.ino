@@ -252,7 +252,5 @@ void loop()
         Keyboard.release( key ) ;
       }
     }
-    
-    prevPressed[ pos ] = currPressed[ pos ] ;
   }
 }
