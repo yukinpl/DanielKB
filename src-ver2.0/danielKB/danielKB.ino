@@ -203,6 +203,7 @@ void setup()
 void loop()
 {
   // put your main code here, to run repeatedly:
+
   for( int8_t out = 0 ; out < outCnt ; ++out )
   {
     setOut( out , HIGH ) ;
@@ -232,12 +233,13 @@ void loop()
     }
 
     prevPressed[ pos ] = currPressed[ pos ] ;
-    prevTime[ pos ] = currTime ;
 
     if( back )
     {
       continue ;
     }
+
+    prevTime[ pos ] = currTime ;
 
     uint8_t key = ( fn == true ) ? ( keymap[ keyCnt + pos ] ) : ( keymap[ pos ] ) ;
 
