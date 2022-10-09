@@ -90,168 +90,161 @@ bool ink[ inCnt ] = { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 } ;
 
 typedef struct
 {
-  bool fk ;
-  bool rk ;
+	bool fk ;
+	bool rk ;
 } KEYS ;
 
 
 KEYS distinguishInput( int value )
 {
-  KEYS keys ;
+	KEYS keys ;
     /**/ if( 60 <= value )
-  {
-    keys.fk = true ;
-    keys.rk = true ;
-  }
-  else if( 50 <= value && 60 >= value )
-  {
-    keys.fk = true  ;
-    keys.rk = false ;
-  }
-  else if( 10 <= value && 20 >= value ) 
-  {
-    keys.fk = false ;
-    keys.rk = true  ;
-  }
-  else  
-  {
-    keys.fk = false ;
-    keys.rk = false ;
-  }
+	{
+		keys.fk = true ;
+		keys.rk = true ;
+	}
+	else if( 50 <= value && 60 >= value )
+	{
+		keys.fk = true  ;
+		keys.rk = false ;
+	}
+	else if( 10 <= value && 20 >= value ) 
+	{
+		keys.fk = false ;
+		keys.rk = true  ;
+	}
+	else  
+	{
+		keys.fk = false ;
+		keys.rk = false ;
+	}
 
-  return keys ;
+	return keys ;
 }
 
 bool IsFnPressed()
 {
-  return currPressed[ 55 ] ;
+	return currPressed[ 55 ] ;
 }
 
 void getIn()
 {
-  int a0 = analogRead( A0 ) ;
-  int a1 = analogRead( A1 ) ;
-  int a2 = analogRead( A2 ) ;
-  int a3 = analogRead( A3 ) ;
+	int a0 = analogRead( A0 ) ;
+	int a1 = analogRead( A1 ) ;
+	int a2 = analogRead( A2 ) ;
+	int a3 = analogRead( A3 ) ;
 
-  KEYS keys ;
+	KEYS keys ;
 
-  keys = distinguishInput( a3 ) ;
-  ink[ 0 ] = keys.rk ;
-  ink[ 1 ] = keys.fk ;
+	keys = distinguishInput( a3 ) ;
+	ink[ 0 ] = keys.rk ;
+	ink[ 1 ] = keys.fk ;
 
-  keys = distinguishInput( a2 ) ;
-  ink[ 2 ] = keys.rk ;
-  ink[ 3 ] = keys.fk ;
+	keys = distinguishInput( a2 ) ;
+	ink[ 2 ] = keys.rk ;
+	ink[ 3 ] = keys.fk ;
 
-  keys = distinguishInput( a1 ) ;
-  ink[ 4 ] = keys.rk ;
-  ink[ 5 ] = keys.fk ;
+	keys = distinguishInput( a1 ) ;
+	ink[ 4 ] = keys.rk ;
+	ink[ 5 ] = keys.fk ;
 
-  keys = distinguishInput( a0 ) ;
-  ink[ 6 ] = keys.rk ;
-  ink[ 7 ] = keys.fk ;
+	keys = distinguishInput( a0 ) ;
+	ink[ 6 ] = keys.rk ;
+	ink[ 7 ] = keys.fk ;
 }
 
 void setOut( int si , bool val )
 {
-  int8_t arr[ 12 ] = {
-  /* 1    2    3    4    5    6    7    8    9    10    11    12  index */
-    12 , 11 , 10 ,  9 ,  8 ,  7 ,  6 ,  5 ,  4 ,  13 ,  22 ,  23
-  } ;
+	int8_t arr[ 12 ] = {
+/*   1    2    3    4    5    6    7    8    9    10    11    12  index */
+	12 , 11 , 10 ,  9 ,  8 ,  7 ,  6 ,  5 ,  4 ,  13 ,  22 ,  23 } ;
 
-  digitalWrite( arr[ si ] , val ) ;
+	digitalWrite( arr[ si ] , val ) ;
 }
 
 
 void setup()
 {
-  // put your setup code here, to run once:
-  pinMode( A0  , INPUT ) ; // 8 , 7
-  pinMode( A1  , INPUT ) ; // 6 , 5
-  pinMode( A2  , INPUT ) ; // 4 , 3
-  pinMode( A3  , INPUT ) ; // 2 , 1
+	// put your setup code here, to run once:
+	pinMode( A0  , INPUT ) ; // 8 , 7
+	pinMode( A1  , INPUT ) ; // 6 , 5
+	pinMode( A2  , INPUT ) ; // 4 , 3
+	pinMode( A3  , INPUT ) ; // 2 , 1
 
-  pinMode( 12 , OUTPUT ) ; // L(11)
-  pinMode( 11 , OUTPUT ) ; // K(10)
-  pinMode( 10 , OUTPUT ) ; // J( 9)
-  pinMode(  9 , OUTPUT ) ; // I( 8)
-  pinMode(  8 , OUTPUT ) ; // H( 7)
-  pinMode(  7 , OUTPUT ) ; // G( 6)
-  pinMode(  6 , OUTPUT ) ; // F( 5)
-  pinMode(  5 , OUTPUT ) ; // E( 4)
-  pinMode(  4 , OUTPUT ) ; // D( 3)
-  pinMode( 13 , OUTPUT ) ; // C( 2)
-  pinMode( 22 , OUTPUT ) ; // B( 1)
-  pinMode( 23 , OUTPUT ) ; // A( 0)
+	pinMode( 12 , OUTPUT ) ; // L(11)
+	pinMode( 11 , OUTPUT ) ; // K(10)
+	pinMode( 10 , OUTPUT ) ; // J( 9)
+	pinMode(  9 , OUTPUT ) ; // I( 8)
+	pinMode(  8 , OUTPUT ) ; // H( 7)
+	pinMode(  7 , OUTPUT ) ; // G( 6)
+	pinMode(  6 , OUTPUT ) ; // F( 5)
+	pinMode(  5 , OUTPUT ) ; // E( 4)
+	pinMode(  4 , OUTPUT ) ; // D( 3)
+	pinMode( 13 , OUTPUT ) ; // C( 2)
+	pinMode( 22 , OUTPUT ) ; // B( 1)
+	pinMode( 23 , OUTPUT ) ; // A( 0)
 
-  for( int8_t pos = 0 ; pos < outCnt ; ++pos )
-  {
-    setOut( pos , LOW ) ;
-  }
+	for( int8_t pos = 0 ; pos < outCnt ; ++pos )
+	{
+		setOut( pos , LOW ) ;
+	}
     
-  for( int8_t pos = 0 ; pos < keyCnt ; ++pos )
-  {
-    prevPressed[ pos ] = false ;
-    currPressed[ pos ] = false ;
-    prevTime[ pos ] = 0 ;
-  }
+	for( int8_t pos = 0 ; pos < keyCnt ; ++pos )
+	{
+		prevPressed[ pos ] = false ;
+		currPressed[ pos ] = false ;
+		prevTime[ pos ] = 0 ;
+	}
 
-  Keyboard.begin() ;
+	Keyboard.begin() ;
 }
 
 void loop()
 {
-  // put your main code here, to run repeatedly:
-  for( int8_t out = 0 ; out < outCnt ; ++out )
-  {
-    setOut( out , HIGH ) ;
-    getIn() ;
+	// put your main code here, to run repeatedly:
+	for( int8_t out = 0 ; out < outCnt ; ++out )
+	{
+		setOut( out , HIGH ) ;
+		getIn() ;
     
-    for( int8_t in = 0 ; in < inCnt ; ++in )
-    {
-      currPressed[ out * inCnt + in ] = ink[ in ] ;
-    }
+		for( int8_t in = 0 ; in < inCnt ; ++in )
+		{
+			currPressed[ out * inCnt + in ] = ink[ in ] ;
+		}
 
-    setOut( out , LOW  ) ;
-  }
+		setOut( out , LOW  ) ;
+	}
 
-  currTime = millis() ; 
-  bool fn = IsFnPressed() ;
+	currTime = millis() ; 
+	bool fn = IsFnPressed() ;
 
-  for( uint8_t pos = 0 ; pos < keyCnt ; ++pos )
-  {
-    bool back = false ;
-    if( prevPressed[ pos ] == currPressed[ pos ] )
-    {
-      back = true ;
-    }
-    else if( currTime - prevTime[ pos ] < DEBOUNCE_PASS_DELAY )
-    {
-      back = true ;
-    }
+	for( uint8_t pos = 0 ; pos < keyCnt ; ++pos )
+	{
+		if( prevPressed[ pos ] == currPressed[ pos ] )
+		{
+			continue ;
+		}
+		else if( currTime - prevTime[ pos ] < DEBOUNCE_PASS_DELAY )
+		{
+			currPressed[ pos ] = prevPressed[ pos ] ;
+			continue ;
+		}
 
-    prevPressed[ pos ] = currPressed[ pos ] ;
+		prevTime[ pos ] = currTime ;
+		prevPressed[ pos ] = currPressed[ pos ] ;
 
-    if( back )
-    {
-      continue ;
-    }
-    
-	prevTime[ pos ] = currTime ;
+		uint8_t key = ( fn == true ) ? ( keymap[ keyCnt + pos ] ) : ( keymap[ pos ] ) ;
 
-    uint8_t key = ( fn == true ) ? ( keymap[ keyCnt + pos ] ) : ( keymap[ pos ] ) ;
-
-    if( 0 != key )
-    {
-      if( true == currPressed[ pos ] )
-      {
-        Keyboard.press( key ) ;
-      }
-      else
-      {
-        Keyboard.release( key ) ;
-      }
-    }
-  }
+		if( 0 != key )
+		{
+			if( true == currPressed[ pos ] )
+			{
+				Keyboard.press( key ) ;
+			}
+			else
+			{
+				Keyboard.release( key ) ;
+			}
+		}
+	}
 }
