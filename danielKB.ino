@@ -232,13 +232,13 @@ void loop()
     }
 
     prevPressed[ pos ] = currPressed[ pos ] ;
+    prevTime[ pos ] = currTime ;
 
     if( back )
     {
       continue ;
     }
 
-    prevTime[ pos ] = currTime ;
     uint8_t key = ( fn == true ) ? ( keymap[ keyCnt + pos ] ) : ( keymap[ pos ] ) ;
 
     if( 0 != key )
