@@ -131,12 +131,6 @@ KEYS distinguishInput( int value )
 }
 
 
-bool IsFn( uint8_t key )
-{
-	return 55 == key ? true : false ;
-}
-
-
 bool IsFnPressed()
 {
 	return currPressed[ 55 ] ;
@@ -251,25 +245,16 @@ void loop()
 		prevTime[ pos ] = currTime ;
 		prevPressed[ pos ] = currPressed[ pos ] ;
 
-		uint8_t key = ( fn == true ) ? ( keymap[ keyCnt + pos ] ) : ( keymap[ pos ] ) ;
 
-		if( 0 == key )
+		/**/ if( true == currPressed[ pos ] )
 		{
-			continue ;
-		}
-
-		/**/ if( false == fn &&  true == currPressed[ pos ] )
-		{
+			uint8_t key = ( fn == true ) ? ( keymap[ keyCnt + pos ] ) : ( keymap[ pos ] ) ;
 			Keyboard.press( key ) ;
 		}
-		else if( false == fn && false == currPressed[ pos ] ) 
+		else
 		{
-			Keyboard.release( key ) ;
-		}
-		else if(  true == fn &&  true == currPressed[ pos ] )
-		{
-			Keyboard.press( key ) ;
-			Keyboard.release( key ) ;
+			Keyboard.release( keymap[ pos ] ) ;
+			Keyboard.release( keymap[ keyCnt + pos ] ) ;
 		}
 	}
 }
