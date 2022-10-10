@@ -49,7 +49,8 @@ uint8_t const keymap[ keyCnt * 2 ] = {
  * 217 = DOWN
  * 218 = UP
  */
- 
+
+
 /*       1     2     3     4     5     6     7     8  */
 /* A */ '1' , '2' , 'q' , 'w' , 'a' , 's' , 'z' , 'x' ,
 /* B */ '3' , '4' , 'e' , 'r' , 'd' , 'f' , 'c' , 'v' ,
@@ -80,24 +81,31 @@ uint8_t const keymap[ keyCnt * 2 ] = {
 
 } ;
 
+
 bool currPressed[ keyCnt ] ;
 bool prevPressed[ keyCnt ] ;
+
 
 uint32_t currTime ;
 uint32_t prevTime[ keyCnt ] ;
 
+
 bool ink[ inCnt ] = { 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 } ;
+
 
 typedef struct
 {
 	bool fk ;
 	bool rk ;
+
 } KEYS ;
+
 
 
 KEYS distinguishInput( int value )
 {
 	KEYS keys ;
+
     /**/ if( 60 <= value )
 	{
 		keys.fk = true ;
@@ -122,10 +130,12 @@ KEYS distinguishInput( int value )
 	return keys ;
 }
 
+
 bool IsFnPressed()
 {
 	return currPressed[ 55 ] ;
 }
+
 
 void getIn()
 {
@@ -153,6 +163,7 @@ void getIn()
 	ink[ 7 ] = keys.fk ;
 }
 
+
 void setOut( int si , bool val )
 {
 	int8_t arr[ 12 ] = {
@@ -166,23 +177,23 @@ void setOut( int si , bool val )
 void setup()
 {
 	// put your setup code here, to run once:
-	pinMode( A0  , INPUT ) ; // 8 , 7
-	pinMode( A1  , INPUT ) ; // 6 , 5
-	pinMode( A2  , INPUT ) ; // 4 , 3
-	pinMode( A3  , INPUT ) ; // 2 , 1
+	pinMode( A0  , INPUT ) ; // 2 , 1
+	pinMode( A1  , INPUT ) ; // 4 , 3
+	pinMode( A2  , INPUT ) ; // 6 , 5
+	pinMode( A3  , INPUT ) ; // 7 , 8
 
-	pinMode( 12 , OUTPUT ) ; // L(11)
-	pinMode( 11 , OUTPUT ) ; // K(10)
-	pinMode( 10 , OUTPUT ) ; // J( 9)
-	pinMode(  9 , OUTPUT ) ; // I( 8)
-	pinMode(  8 , OUTPUT ) ; // H( 7)
-	pinMode(  7 , OUTPUT ) ; // G( 6)
-	pinMode(  6 , OUTPUT ) ; // F( 5)
-	pinMode(  5 , OUTPUT ) ; // E( 4)
-	pinMode(  4 , OUTPUT ) ; // D( 3)
-	pinMode( 13 , OUTPUT ) ; // C( 2)
-	pinMode( 22 , OUTPUT ) ; // B( 1)
-	pinMode( 23 , OUTPUT ) ; // A( 0)
+	pinMode( 12 , OUTPUT ) ; // A( 0)
+	pinMode( 11 , OUTPUT ) ; // B( 1)
+	pinMode( 10 , OUTPUT ) ; // C( 2)
+	pinMode(  9 , OUTPUT ) ; // D( 3)
+	pinMode(  8 , OUTPUT ) ; // E( 4)
+	pinMode(  7 , OUTPUT ) ; // F( 5)
+	pinMode(  6 , OUTPUT ) ; // G( 6)
+	pinMode(  5 , OUTPUT ) ; // H( 7)
+	pinMode(  4 , OUTPUT ) ; // I( 8)
+	pinMode( 13 , OUTPUT ) ; // J( 9)
+	pinMode( 22 , OUTPUT ) ; // K(10)
+	pinMode( 23 , OUTPUT ) ; // L(11)
 
 	for( int8_t pos = 0 ; pos < outCnt ; ++pos )
 	{
@@ -198,6 +209,7 @@ void setup()
 
 	Keyboard.begin() ;
 }
+
 
 void loop()
 {
@@ -233,18 +245,16 @@ void loop()
 		prevTime[ pos ] = currTime ;
 		prevPressed[ pos ] = currPressed[ pos ] ;
 
-		uint8_t key = ( fn == true ) ? ( keymap[ keyCnt + pos ] ) : ( keymap[ pos ] ) ;
 
-		if( 0 != key )
+		/**/ if( true == currPressed[ pos ] )
 		{
-			if( true == currPressed[ pos ] )
-			{
-				Keyboard.press( key ) ;
-			}
-			else
-			{
-				Keyboard.release( key ) ;
-			}
+			uint8_t key = ( fn == true ) ? ( keymap[ keyCnt + pos ] ) : ( keymap[ pos ] ) ;
+			Keyboard.press( key ) ;
+		}
+		else
+		{
+			Keyboard.release( keymap[ pos ] ) ;
+			Keyboard.release( keymap[ keyCnt + pos ] ) ;
 		}
 	}
 }
