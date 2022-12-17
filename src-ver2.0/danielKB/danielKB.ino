@@ -1,6 +1,6 @@
 #include "Keyboard.h"
 
-#define DEBOUNCE_PASS_DELAY ( 20 )
+#define DEBOUNCE_PASS_DELAY ( 30 )
 
 uint8_t const outCnt = 12 ;
 uint8_t const  inCnt =  8 ;
